@@ -167,8 +167,46 @@ label.file {
 }
 label.file input { display: none; }
 
-/* Print: show only summary cleanly */
+/* Print: show only summary cleanly (Safari-safe) */
 @media print {
+  @page { margin: 0.5in; }
+
+  body { background: white; color: black; }
+  header, footer { display: none !important; }
+
+  /* Hide everything except the summary card */
+  main { padding: 0; max-width: none; }
+  .card { display: none !important; }
+  #summaryCard { 
+    display: block !important; 
+    border: none; 
+    background: white; 
+    padding: 0; 
+    margin: 0; 
+  }
+
+  /* Hide preview + UI controls in print */
+  #togglePreview, #handoffPreview { display: none !important; }
+  button, .row, .hint { display: none !important; }
+
+  .summary { 
+    border: none; 
+    background: white; 
+    color: black; 
+    padding: 0; 
+  }
+
+  .summary pre {
+    color: black;
+    font-size: 11.5pt;
+    line-height: 1.25;
+    white-space: pre-wrap;
+  }
+
+  /* Avoid ugly breaks */
+  h2 { page-break-after: avoid; }
+  pre { page-break-inside: avoid; }
+}
   body { background: white; color: black; }
   header, footer, .card:not(:has(#summaryHost)) { display: none !important; }
   main { padding: 0; max-width: none; }
@@ -176,4 +214,49 @@ label.file input { display: none; }
   .summary { border: none; background: white; color: black; }
   .summary pre { color: black; }
   button, .row, .hint { display: none !important; }
+}
+/* Handoff preview (in-app) */
+.handoff-preview {
+  margin: 10px 0 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #0c0e12;
+  padding: 10px;
+}
+
+.handoff-preview .handoff-sheet {
+  background: white;
+  color: black;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.handoff-preview .handoff-title {
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.handoff-preview .handoff-meta {
+  font-size: 12.5px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.handoff-preview .warn {
+  border: 1px solid #999;
+  padding: 10px;
+  margin: 0 0 12px 0;
+  background: #fff7e6;
+}
+
+.handoff-preview .warn ul { margin: 6px 0 0 18px; }
+
+.handoff-preview pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+  font-size: 12.5px;
+  line-height: 1.25;
 }
