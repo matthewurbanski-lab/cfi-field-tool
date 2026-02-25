@@ -64,11 +64,13 @@ async function init() {
 
   document.getElementById("addLineItem").onclick = () => addCustomLineItem();
 
-  document.getElementById("openCheat").onclick = () => window.open("./cheat-sheet.md", "_blank");
+ document.getElementById("openCheat").onclick = () => window.open("./cheat-sheet.md", "_blank");
 
-  document.getElementById("printSummary").onclick = () => window.print();
+document.getElementById("togglePreview").onclick = () => toggleHandoffPreview();
 
-  document.getElementById("copySummary").onclick = async () => {
+document.getElementById("printSummary").onclick = () => printHandoff();
+
+document.getElementById("copySummary").onclick = async () => {
     const text = buildSummaryText();
     try {
       await navigator.clipboard.writeText(text);
@@ -89,7 +91,7 @@ function bindJobFields() {
     document.getElementById(id).addEventListener("input", () => {
       saveJobFields();
       saveState();
-      renderSummary();
+refreshSummaryAndPreview();
     });
   });
 }
@@ -188,7 +190,7 @@ function computeAndRender() {
 
   saveState();
   renderSolutions();
-  renderSummary();
+  refreshSummaryAndPreview();
 }
 
 function renderSolutions() {
@@ -318,7 +320,7 @@ function renderLineItem(solutionId, line, idx, sol) {
     state.flightPlans[solutionId].splice(idx, 1);
     saveState();
     openFlightPlan(solutionId);
-    renderSummary();
+    refreshSummaryAndPreview();
   };
 
   bottom.appendChild(notes);
@@ -335,7 +337,7 @@ function updateLine(solutionId, idx, patch) {
   const current = state.flightPlans[solutionId][idx];
   state.flightPlans[solutionId][idx] = { ...current, ...patch };
   saveState();
-  renderSummary();
+  refreshSummaryAndPreview();
 }
 
 function addCustomLineItem() {
@@ -352,7 +354,7 @@ function addCustomLineItem() {
   });
   saveState();
   openFlightPlan(solutionId);
-  renderSummary();
+  refreshSummaryAndPreview();
 }
 
 function renderFieldPrompts() {
@@ -369,7 +371,7 @@ function renderFieldPrompts() {
     cb.onchange = () => {
       state.promptsDone[p.id] = cb.checked;
       saveState();
-      renderSummary();
+      refreshSummaryAndPreview();
     };
 
     const txt = document.createElement("div");
@@ -459,6 +461,92 @@ function buildSummaryText() {
 }
 
 function renderSummary() {
+  function refreshSummaryAndPreview() {
+  refreshSummaryAndPreview();
+  const previewHost = document.getElementById("handoffPreview");
+  if (previewHost && previewHost.style.display !== "none") renderHandoffPreview();
+}
+
+function getHandoffWarnings() {
+  const w = [];
+  if (!state.job.address?.trim()) w.push("Missing Address");
+  if (!state.job.date?.trim()) w.push("Missing Date");
+
+  const promptsMissing = FIELD_PROMPTS.filter(p => !state.promptsDone[p.id]).length;
+  if (promptsMissing) w.push(`Field prompts incomplete (${promptsMissing} unchecked)`);
+
+  return w;
+}
+
+function buildHandoffInnerHtml(text) {
+  const warnings = getHandoffWarnings();
+  const warnBlock = warnings.length
+    ? `<div class="warn"><strong>⚠ Review before submitting:</strong><ul>${warnings.map(x => `<li>${escapeHtml(x)}</li>`).join("")}</ul></div>`
+    : "";
+
+  const metaParts = [];
+  if (state.job.address) metaParts.push(escapeHtml(state.job.address));
+  if (state.job.date) metaParts.push(escapeHtml(state.job.date));
+
+  return `
+    <div class="handoff-sheet">
+      <div class="handoff-title">CFI Job Summary</div>
+      <div class="handoff-meta">${metaParts.join(" • ")}</div>
+      ${warnBlock}
+      <pre>${escapeHtml(text)}</pre>
+    </div>
+  `;
+}
+
+function renderHandoffPreview() {
+  const host = document.getElementById("handoffPreview");
+  const text = buildSummaryText();
+  host.innerHTML = buildHandoffInnerHtml(text);
+}
+
+function toggleHandoffPreview() {
+  const host = document.getElementById("handoffPreview");
+  const btn = document.getElementById("togglePreview");
+
+  const isOpen = host.style.display !== "none";
+  if (isOpen) {
+    host.style.display = "none";
+    btn.textContent = "Preview Handoff";
+    return;
+  }
+
+  renderHandoffPreview();
+  host.style.display = "block";
+  btn.textContent = "Hide Preview";
+  host.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function printHandoff() {
+  saveJobFields();
+
+  // Hard-stop on critical fields
+  const criticalMissing = [];
+  if (!state.job.address?.trim()) criticalMissing.push("Address");
+  if (!state.job.date?.trim()) criticalMissing.push("Date");
+
+  if (criticalMissing.length) {
+    alert("Cannot print yet. Missing: " + criticalMissing.join(", "));
+    return;
+  }
+
+  // Soft warning confirm (prompts incomplete, etc.)
+  const warnings = getHandoffWarnings();
+  if (warnings.length) {
+    const ok = confirm("Handoff warnings:\n\n- " + warnings.join("\n- ") + "\n\nPrint anyway?");
+    if (!ok) return;
+  }
+
+  // Keep preview in sync if it’s open
+  const previewHost = document.getElementById("handoffPreview");
+  if (previewHost && previewHost.style.display !== "none") renderHandoffPreview();
+
+  window.print();
+}
   const host = document.getElementById("summaryHost");
   const text = buildSummaryText();
   host.innerHTML = `<div class="summary"><pre>${escapeHtml(text)}</pre></div>`;
