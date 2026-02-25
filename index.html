@@ -1,104 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0f1115" />
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <title>CFI Field Tool</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header>
-    <h1>CFI Field Tool</h1>
-    <div class="sub">Logic Checklist • Solution Filter • Flight Plan • Job Summary • Export</div>
-  </header>
+<main>
+  <section class="card">
+    <h2>Job Info</h2>
+    <div class="grid">
+      <label>Address<input id="jobAddress" placeholder="123 Main St, City, ST"></label>
+      <label>Homeowner<input id="jobHomeowner" placeholder="Name"></label>
+      <label>Date<input id="jobDate" type="date"></label>
+    </div>
+    <label>Notes<textarea id="jobNotes" rows="3" placeholder="Quick context, constraints, access notes..."></textarea></label>
+  </section>
 
-  <main>
+  <section class="card">
+    <h2>Logic-Based Checklist</h2>
+    <div id="questionHost"></div>
+    <div class="row">
+      <button id="resetAnswers" class="secondary">Reset Answers</button>
+      <button id="saveNow" class="secondary">Save</button>
+    </div>
+  </section>
 
-<section class="card" id="summaryCard">
-  <h2>Job Summary</h2>
+  <section class="card">
+    <h2>Suggested Solution Types</h2>
+    <div id="solutionHost" class="chips"></div>
+    <p class="hint">Tap a solution to open its Flight Plan. Eligibility notes + spacing/product hints appear inside.</p>
+  </section>
 
-  <div class="row">
-    <button id="togglePreview" class="secondary" type="button">Preview Handoff</button>
-    <button id="printSummary" class="secondary" type="button">Print Summary</button>
-    <button id="copySummary" class="secondary" type="button">Copy Summary</button>
-  </div>
+  <section class="card" id="flightPlanCard">
+    <h2 id="flightPlanTitle">Flight Plan</h2>
+    <div id="flightPlanHints" class="hint"></div>
+    <div id="flightPlanHost" class="flight"></div>
+    <div class="row">
+      <button id="addLineItem" class="secondary">Add Line Item</button>
+      <button id="closeFlightPlan" class="secondary">Close</button>
+    </div>
+  </section>
 
-  <div id="handoffPreview" class="handoff-preview" style="display:none;"></div>
+  <section class="card" id="summaryCard">
+    <h2>Job Summary</h2>
 
-  <div id="summaryHost"></div>
+    <div class="row">
+      <button id="togglePreview" class="secondary" type="button">Preview Handoff</button>
+      <button id="printSummary" class="secondary" type="button">Print Summary</button>
+      <button id="copySummary" class="secondary" type="button">Copy Summary</button>
+    </div>
 
-  <p class="hint">Summary auto-updates from answers + flight plan quantities. Preview shows the exact formatted layout used for printing.</p>
-</section>
+    <div id="handoffPreview" class="handoff-preview" style="display:none;"></div>
 
-    <section class="card">
-      <h2>Logic-Based Checklist</h2>
-      <div id="questionHost"></div>
-      <div class="row">
-        <button id="resetAnswers" class="secondary">Reset Answers</button>
-        <button id="saveNow" class="secondary">Save</button>
-      </div>
-    </section>
+    <div id="summaryHost"></div>
 
-    <section class="card">
-      <h2>Suggested Solution Types</h2>
-      <div id="solutionHost" class="chips"></div>
-      <p class="hint">Tap a solution to open its Flight Plan. Eligibility notes + spacing/product hints appear inside.</p>
-    </section>
+    <p class="hint">Summary auto-updates from answers + flight plan quantities. Preview shows the exact formatted layout used for printing.</p>
+  </section>
 
-    <section class="card" id="flightPlanCard">
-      <h2 id="flightPlanTitle">Flight Plan</h2>
-      <div id="flightPlanHints" class="hint"></div>
-      <div id="flightPlanHost" class="flight"></div>
-      <div class="row">
-        <button id="addLineItem" class="secondary">Add Line Item</button>
-        <button id="closeFlightPlan" class="secondary">Close</button>
-      </div>
-    </section>
+  <section class="card">
+    <h2>Field Prompts (Photos + Readings)</h2>
+    <div class="checklist" id="fieldPrompts"></div>
+  </section>
 
-    <section class="card">
-      <h2>Job Summary</h2>
-      <div id="summaryHost"></div>
-      <div class="row">
-        <button id="printSummary" class="secondary">Print Summary</button>
-        <button id="copySummary" class="secondary">Copy Summary</button>
-      </div>
-      <p class="hint">Summary auto-updates from answers + flight plan quantities. Print creates a clean one-page handoff.</p>
-    </section>
+  <section class="card">
+    <h2>Cheat Sheet</h2>
+    <div class="row">
+      <button id="openCheat" class="secondary">Open cheat-sheet.md</button>
+    </div>
+    <p class="hint">Full reference is in cheat-sheet.md. Mini version below.</p>
+    <div class="mini-cheat" id="miniCheat"></div>
+  </section>
 
-    <section class="card">
-      <h2>Field Prompts (Photos + Readings)</h2>
-      <div class="checklist" id="fieldPrompts"></div>
-    </section>
-
-    <section class="card">
-      <h2>Cheat Sheet</h2>
-      <div class="row">
-        <button id="openCheat" class="secondary">Open cheat-sheet.md</button>
-      </div>
-      <p class="hint">Full reference is in cheat-sheet.md. Mini version below.</p>
-      <div class="mini-cheat" id="miniCheat"></div>
-    </section>
-
-    <section class="card">
-      <h2>Export / Import</h2>
-      <div class="row">
-        <button id="exportBtn">Export Job JSON</button>
-        <label class="file">
-          Import Job JSON
-          <input id="importFile" type="file" accept="application/json" />
-        </label>
-      </div>
-      <p class="hint">Export at the end of inspection. Import if you need to resume on another device.</p>
-    </section>
-  </main>
-
-  <footer>
-    <small>Local autosave enabled. Add to Home Screen for an app-like iPad experience.</small>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+  <section class="card">
+    <h2>Export / Import</h2>
+    <div class="row">
+      <button id="exportBtn">Export Job JSON</button>
+      <label class="file">
+        Import Job JSON
+        <input id="importFile" type="file" accept="application/json" />
+      </label>
+    </div>
+    <p class="hint">Export at the end of inspection. Import if you need to resume on another device.</p>
+  </section>
+</main>
