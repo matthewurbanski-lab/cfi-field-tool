@@ -16,15 +16,22 @@
   </header>
 
   <main>
-    <section class="card">
-      <h2>Job Info</h2>
-      <div class="grid">
-        <label>Address<input id="jobAddress" placeholder="123 Main St, City, ST"></label>
-        <label>Homeowner<input id="jobHomeowner" placeholder="Name"></label>
-        <label>Date<input id="jobDate" type="date"></label>
-      </div>
-      <label>Notes<textarea id="jobNotes" rows="3" placeholder="Quick context, constraints, access notes..."></textarea></label>
-    </section>
+
+<section class="card" id="summaryCard">
+  <h2>Job Summary</h2>
+
+  <div class="row">
+    <button id="togglePreview" class="secondary" type="button">Preview Handoff</button>
+    <button id="printSummary" class="secondary" type="button">Print Summary</button>
+    <button id="copySummary" class="secondary" type="button">Copy Summary</button>
+  </div>
+
+  <div id="handoffPreview" class="handoff-preview" style="display:none;"></div>
+
+  <div id="summaryHost"></div>
+
+  <p class="hint">Summary auto-updates from answers + flight plan quantities. Preview shows the exact formatted layout used for printing.</p>
+</section>
 
     <section class="card">
       <h2>Logic-Based Checklist</h2>
