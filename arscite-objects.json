@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "objects": [
+    "Perimeter Drain (Interior)",
+    "Drain Outlet / Lateral",
+    "Sump Basin",
+    "Sump Pump",
+    "Discharge Line",
+    "Downspout Extension",
+    "Wall Vapor Barrier / Membrane",
+    "Dehumidifier",
+    "Encapsulation Liner",
+    "Crawl Door",
+    "Supplemental Beam",
+    "Floor Support / Jack",
+    "Sister Joist",
+    "Poly Injection Points",
+    "Crack/Joint Repair Line",
+    "Wall Brace",
+    "Wall Anchor / Helical Anchor",
+    "Measurement Marker",
+    "Obstruction Marker"
+  ]
+}

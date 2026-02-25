@@ -1,0 +1,423 @@
+{
+  "version": "1.1",
+  "solutions": [
+    {
+      "id": "basement_water",
+      "name": "Basement Water Control (Interior Drain + Sump + Discharge)",
+      "tags": [
+        "water",
+        "basement"
+      ],
+      "flightPlanUnits": [
+        "LF",
+        "EA",
+        "SF"
+      ],
+      "defaults": {
+        "flightPlan": [
+          {
+            "item": "Interior perimeter drain system",
+            "unit": "LF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Perimeter Drain (Interior)"
+          },
+          {
+            "item": "Sump basin/pump system",
+            "unit": "EA",
+            "qty": 1,
+            "notes": "",
+            "arcsiteObject": "Sump Basin"
+          },
+          {
+            "item": "Discharge routing + termination",
+            "unit": "EA",
+            "qty": 1,
+            "notes": "Account for topography + obstructions.",
+            "arcsiteObject": "Discharge Line"
+          },
+          {
+            "item": "Wall vapor barrier/membrane (if needed)",
+            "unit": "SF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Wall Vapor Barrier / Membrane"
+          },
+          {
+            "item": "Dehumidifier (if needed)",
+            "unit": "EA",
+            "qty": 0,
+            "notes": "Add when humidity >60% or odor/mold concerns.",
+            "arcsiteObject": "Dehumidifier"
+          }
+        ]
+      }
+    },
+    {
+      "id": "crawlspace_water",
+      "name": "Crawlspace Water Control + Encapsulation Add-ons",
+      "tags": [
+        "water",
+        "crawlspace"
+      ],
+      "flightPlanUnits": [
+        "LF",
+        "EA",
+        "SF"
+      ],
+      "defaults": {
+        "flightPlan": [
+          {
+            "item": "Crawlspace interior drain to sump",
+            "unit": "LF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Perimeter Drain (Interior)"
+          },
+          {
+            "item": "Sump basin/pump system",
+            "unit": "EA",
+            "qty": 1,
+            "notes": "",
+            "arcsiteObject": "Sump Basin"
+          },
+          {
+            "item": "Discharge line + termination",
+            "unit": "EA",
+            "qty": 1,
+            "notes": "Confirm included/excluded; route + termination.",
+            "arcsiteObject": "Discharge Line"
+          },
+          {
+            "item": "Encapsulation / liner coverage",
+            "unit": "SF",
+            "qty": 0,
+            "notes": "Confirm wall height; need crawl door?",
+            "arcsiteObject": "Encapsulation Liner"
+          },
+          {
+            "item": "Crawl door (if needed)",
+            "unit": "EA",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Crawl Door"
+          },
+          {
+            "item": "Dehumidifier / air system (if needed)",
+            "unit": "EA",
+            "qty": 0,
+            "notes": "Verify coverage matches cubic area.",
+            "arcsiteObject": "Dehumidifier"
+          },
+          {
+            "item": "Insulation removal (if applicable)",
+            "unit": "SF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Obstruction Marker"
+          },
+          {
+            "item": "Mold treatment (if applicable)",
+            "unit": "SF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Obstruction Marker"
+          }
+        ]
+      }
+    },
+    {
+      "id": "floor_framing",
+      "name": "Floor Framing Stabilization (Beams + Supports + Joist Repair)",
+      "tags": [
+        "structure",
+        "floor"
+      ],
+      "flightPlanUnits": [
+        "LF",
+        "EA"
+      ],
+      "defaults": {
+        "flightPlan": [
+          {
+            "item": "Supplemental beam path",
+            "unit": "LF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Supplemental Beam"
+          },
+          {
+            "item": "Floor supports (SettleStop/IntelliJack)",
+            "unit": "EA",
+            "qty": 0,
+            "notes": "Count supports + record layout.",
+            "arcsiteObject": "Floor Support / Jack"
+          },
+          {
+            "item": "Sister joists (if needed)",
+            "unit": "LF",
+            "qty": 0,
+            "notes": "",
+            "arcsiteObject": "Sister Joist"
+          }
+        ]
+      }
+    },
+    {
+      "id": "concrete_leveling",
+      "name": "Concrete Stabilize/Lift (Poly + Crack/Joint Repair)",
+      "tags": [
+        "concrete"
+      ],
+      "flightPlanUnits": [
+        "SF",
+        "LF"
+      ],
+      "defaults": {
+        "flightPlan": [
+          {
+            "item": "Poly stabilization/lift area",
+            "unit": "SF",
+            "qty": 0,
+            "notes": "Stabilize measured in SF.",
+            "arcsiteObject": "Poly Injection Points"
+          },
+          {
+            "item": "Crack/joint caulk repair",
+            "unit": "LF",
+            "qty": 0,
+            "notes": "Cracks measured in LF.",
+            "arcsiteObject": "Crack/Joint Repair Line"
+          }
+        ]
+      }
+    },
+    {
+      "id": "wall_stabilization",
+      "name": "Foundation Wall Stabilization (Bowing/Tipping/Shearing)",
+      "tags": [
+        "structure",
+        "wall"
+      ],
+      "flightPlanUnits": [
+        "EA",
+        "LF"
+      ],
+      "defaults": {
+        "flightPlan": [
+          {
+            "item": "Wall stabilization system (choose product)",
+            "unit": "EA",
+            "qty": 0,
+            "notes": "Eligible products depend on deflection/shearing/joists/property line.",
+            "arcsiteObject": "Wall Brace"
+          },
+          {
+            "item": "Measurement sections (base/mid/top)",
+            "unit": "EA",
+            "qty": 3,
+            "notes": "Same vertical plane; record readings.",
+            "arcsiteObject": "Measurement Marker"
+          }
+        ]
+      }
+    }
+  ],
+  "questions": [
+    {
+      "id": "space_type",
+      "text": "Which space is being inspected?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Basement",
+          "value": "basement",
+          "tags": [
+            "basement"
+          ]
+        },
+        {
+          "label": "Crawlspace",
+          "value": "crawlspace",
+          "tags": [
+            "crawlspace"
+          ]
+        },
+        {
+          "label": "Slab/Exterior Flatwork",
+          "value": "flatwork",
+          "tags": [
+            "concrete"
+          ]
+        },
+        {
+          "label": "Mixed / Multiple",
+          "value": "mixed",
+          "tags": [
+            "basement",
+            "crawlspace",
+            "concrete"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "water_present",
+      "text": "Is there standing water, water marks, efflorescence, or active seepage?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "humidity_mold",
+      "text": "Visible mold/odor or humidity concerns (or humidity > 60%)?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "water"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "floor_symptoms",
+      "text": "Any floor framing symptoms upstairs? (bouncy floors, tile cracks, doors sticking, trim/base gaps)",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "floor",
+            "structure"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "wall_movement",
+      "text": "Any wall movement indicators? (bowing/tipping/shearing, stair-step cracks, deflection readings)",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "wall",
+            "structure"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "property_line_limit",
+      "text": "Property line limitation that prevents exterior anchors?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "no_anchors"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "shearing_present",
+      "text": "Is wall shearing/tipping present (advanced movement)?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "shearing"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "id": "concrete_settlement",
+      "text": "Any exterior concrete settlement/trip hazards/cracks needing stabilize or lift?",
+      "type": "single",
+      "options": [
+        {
+          "label": "Yes",
+          "value": "yes",
+          "tags": [
+            "concrete"
+          ]
+        },
+        {
+          "label": "No",
+          "value": "no",
+          "tags": []
+        }
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "remove_anchor_products_when_property_line",
+      "ifAllTags": [
+        "no_anchors"
+      ],
+      "then": {
+        "removeProductHints": [
+          "Wall Anchors / Helical Anchors (if eligible)"
+        ]
+      }
+    },
+    {
+      "id": "add_c_channel_hint_when_shearing",
+      "ifAllTags": [
+        "shearing"
+      ],
+      "then": {
+        "addNotesToSolution": "wall_stabilization",
+        "note": "Shearing present: verify C-channel requirement + spacing per branch rules."
+      }
+    }
+  ]
+}

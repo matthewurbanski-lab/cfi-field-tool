@@ -1,0 +1,145 @@
+{
+  "version": "1.0",
+  "solutions": {
+    "basement_water": {
+      "displayName": "Basement Water Control (Interior Drain + Sump + Discharge)",
+      "productOptions": [
+        {
+          "name": "Interior Perimeter Drain System",
+          "spacingRule": "Continuous along affected perimeter (LF)",
+          "notes": "Designed to collect water at the footing line and route to sump."
+        },
+        {
+          "name": "Sump Pump System",
+          "spacingRule": "EA (per pit)",
+          "notes": "Specify basin location + discharge route."
+        },
+        {
+          "name": "Discharge / Extensions / FreezeGuard / IceGuard (as applicable)",
+          "spacingRule": "EA (per discharge assembly)",
+          "notes": "Route must follow topography and avoid obstructions. Confirm termination location."
+        },
+        {
+          "name": "Wall Vapor Barrier / Drainage Membrane (as applicable)",
+          "spacingRule": "Continuous on affected walls (LF/SF depending on branch standard)",
+          "notes": "Use when seepage/efflorescence or porous block present."
+        },
+        {
+          "name": "Dehumidifier (as applicable)",
+          "spacingRule": "EA (per unit)",
+          "notes": "Add when humidity > 60% or odor/mold concerns; ensure coverage matches cubic footage."
+        }
+      ]
+    },
+    "crawlspace_water": {
+      "displayName": "Crawlspace Water Control + Encapsulation Add-ons",
+      "productOptions": [
+        {
+          "name": "Crawlspace Interior Drain",
+          "spacingRule": "LF to sump",
+          "notes": "Confirm linear footage and route to pit."
+        },
+        {
+          "name": "Sump Pump System",
+          "spacingRule": "EA",
+          "notes": "Confirm pit location relative to low point."
+        },
+        {
+          "name": "Discharge Line",
+          "spacingRule": "EA",
+          "notes": "Confirm included/excluded; route + termination location."
+        },
+        {
+          "name": "Encapsulation / Liner",
+          "spacingRule": "SF",
+          "notes": "Confirm wall height coverage and seams/tape requirements."
+        },
+        {
+          "name": "Crawl Door",
+          "spacingRule": "EA",
+          "notes": "Add if needed for proper seal/access."
+        },
+        {
+          "name": "Dehumidifier / Air System",
+          "spacingRule": "EA",
+          "notes": "Ensure coverage matches cubic area."
+        },
+        {
+          "name": "Insulation Removal (if applicable)",
+          "spacingRule": "SF",
+          "notes": "Include if wet/falling/contaminated."
+        },
+        {
+          "name": "Mold Treatment (if applicable)",
+          "spacingRule": "SF",
+          "notes": "Include per branch standard when mold present."
+        }
+      ]
+    },
+    "floor_framing": {
+      "displayName": "Floor Framing Stabilization (Beams + Supports + Joist Repair)",
+      "productOptions": [
+        {
+          "name": "Supplemental Beam (lumber/S4/c-channel)",
+          "spacingRule": "LF",
+          "notes": "Specify beam path + bearing points; account for obstructions."
+        },
+        {
+          "name": "Floor Supports (SettleStop Floor Support / IntelliJack)",
+          "spacingRule": "EA (count of supports)",
+          "notes": "Typical spacing is branch-specific; set spacing per span/load. Record exact layout in ArcSite."
+        },
+        {
+          "name": "Sister Joists (if needed)",
+          "spacingRule": "LF",
+          "notes": "Use where joists are damaged/undersized; note extent."
+        },
+        {
+          "name": "Moisture Mitigation Add-on",
+          "spacingRule": "EA/LF/SF",
+          "notes": "If wood moisture >16% or humidity >60%, pair with crawlspace water control."
+        }
+      ]
+    },
+    "concrete_leveling": {
+      "displayName": "Concrete Stabilize/Lift (Poly + Crack/Joint Repair)",
+      "productOptions": [
+        {
+          "name": "PolyRenewal Stabilization / Lift",
+          "spacingRule": "SF",
+          "notes": "Stabilization is the guarantee; lift is attempted\u2014avoid promising perfection."
+        },
+        {
+          "name": "Crack / Joint Caulk Repair",
+          "spacingRule": "LF",
+          "notes": "Measure cracks/joints; note trip hazards and transitions."
+        }
+      ]
+    },
+    "wall_stabilization": {
+      "displayName": "Foundation Wall Stabilization (Bowing/Tipping/Shearing)",
+      "productOptions": [
+        {
+          "name": "Carbon Fiber (if eligible)",
+          "spacingRule": "EA at branch spacing",
+          "notes": "Typically for low deflection and no shearing. Verify eligibility per branch rules."
+        },
+        {
+          "name": "IntelliBrace / Brace System (if eligible)",
+          "spacingRule": "EA at branch spacing",
+          "notes": "Check joist compatibility; measure base/mid/top in same plane."
+        },
+        {
+          "name": "Wall Anchors / Helical Anchors (if eligible)",
+          "spacingRule": "EA at branch spacing",
+          "notes": "Property line constraints may remove anchor options."
+        },
+        {
+          "name": "C-Channel Requirement (when shearing/advanced movement)",
+          "spacingRule": "EA (per brace)",
+          "notes": "Use when shearing/tipping requires stronger distribution."
+        }
+      ]
+    }
+  }
+}

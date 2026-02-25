@@ -1,0 +1,179 @@
+
+:root {
+  --bg: #0f1115;
+  --card: #171a21;
+  --text: #e8eaf0;
+  --muted: #a8afc0;
+  --accent: #6ea8fe;
+  --danger: #ff6b6b;
+  --line: #2a2f3a;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header, footer {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+}
+footer { border-top: 1px solid var(--line); border-bottom: none; color: var(--muted); }
+
+h1 { margin: 0; font-size: 20px; }
+.sub { color: var(--muted); margin-top: 4px; font-size: 13px; }
+
+main { padding: 12px; max-width: 980px; margin: 0 auto; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+h2 { margin: 0 0 10px 0; font-size: 16px; }
+label { display: block; margin: 8px 0; color: var(--muted); font-size: 13px; }
+input, textarea, select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  background: #0c0e12;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 15px;
+}
+textarea { resize: vertical; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 760px) {
+  .grid { grid-template-columns: 2fr 1fr 1fr; }
+}
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+button {
+  border: none;
+  background: var(--accent);
+  color: #061022;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+}
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.hint { color: var(--muted); font-size: 13px; }
+
+.q {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.q .qt { font-weight: 700; margin-bottom: 8px; }
+.q .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+.q .opt {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  background: #0c0e12;
+}
+.q .opt.active { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(110,168,254,0.15) inset; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: #0c0e12;
+}
+.chip button {
+  background: transparent;
+  color: var(--text);
+  padding: 0;
+  font-weight: 700;
+}
+
+#flightPlanCard { display: none; }
+.flight .line {
+  display: grid;
+  grid-template-columns: 2fr 0.6fr 0.6fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.flight .line input, .flight .line select { margin-top: 0; }
+.flight .line .danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--line);
+}
+
+.checklist .item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+.checklist .item input { width: 22px; height: 22px; margin-top: 2px; }
+
+.mini-cheat {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.summary {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  background: #0c0e12;
+  color: var(--text);
+}
+.summary pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+label.file {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+}
+label.file input { display: none; }
+
+/* Print: show only summary cleanly */
+@media print {
+  body { background: white; color: black; }
+  header, footer, .card:not(:has(#summaryHost)) { display: none !important; }
+  main { padding: 0; max-width: none; }
+  .card { border: none; background: white; }
+  .summary { border: none; background: white; color: black; }
+  .summary pre { color: black; }
+  button, .row, .hint { display: none !important; }
+}
